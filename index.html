@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student API Interaction</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to the external CSS file -->
+</head>
+<body>
+
+    <!-- Top banner with the text overlay -->
+    <div class="banner">
+        <h1>Student API Interaction</h1>
+    </div>
+
+    <!-- Content section -->
+    <div class="content">
+        <div class="form-section">
+            <h2>Add New Student</h2>
+            <form id="studentForm">
+                <label for="studentId">Student ID:</label>
+                <input type="text" id="studentId" name="studentId">
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age">
+
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course">
+
+                <button type="button" onclick="addStudent()">Add Student</button>
+            </form>
+
+            <h2>Get Student by ID</h2>
+            <form>
+                <label for="getStudentId">Student ID:</label>
+                <input type="text" id="getStudentId" name="getStudentId">
+                <button type="button" onclick="getStudent()">Get Student</button>
+            </form>
+
+            <h3>Student Details:</h3>
+            <pre id="studentDetails"></pre>
+        </div>
+
+        <!-- Image 2 next to the form -->
+        <div>
+            <img src="images/image2.jpg" alt="Image 2" class="image2"> <!-- Use image2 from images folder -->
+        </div>
+    </div>
+
+    <!-- Footer banner -->
+    <div class="footer"></div>
+
+    <!-- Footer for Contact and Trademark -->
+    <footer>
+        <p>© 2024 DevOps Easy Learning. All rights reserved.</p>
+        <p><a href="about.html" style="color: white;">About Us</a> | <a href="mailto:support@devopseasylearning.com" style="color: white;">Contact Us</a></p>
+    </footer>
+
+    <script>
+        const apiUrl = 'https://89agwnfs08.execute-api.us-east-1.amazonaws.com/dev/students';
+
+        // Function to add a student
+        function addStudent() {
+            const studentId = document.getElementById('studentId').value;
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const course = document.getElementById('course').value;
+
+            const data = {
+                studentId: studentId,
+                name: name,
+                age: parseInt(age),
+                course: course
+            };
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => alert('Student added successfully: ' + JSON.stringify(data)))
+            .catch(error => alert('Error: ' + error));
+        }
+
+        // Function to retrieve a student
+        function getStudent() {
+            const studentId = document.getElementById('getStudentId').value;
+
+            fetch(apiUrl + '?studentId=' + studentId, {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('studentDetails').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => alert('Error: ' + error));
+        }
+    </script>
+</body>
+</html>
+

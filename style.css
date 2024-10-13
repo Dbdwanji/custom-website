@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #e0f7fa; /* Pale blue background */
+}
+
+/* Top banner styling */
+.banner {
+    width: 100%;
+    height: 200px; /* Adjust height as needed */
+    background-image: url('images/image3.jpg'); /* Use image3 from images folder */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: flex-start; /* Align text to the left */
+    align-items: center;
+    padding-left: 20px; /* Add left padding */
+}
+.banner h1 {
+    color: white;
+    font-size: 40px;
+    margin: 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Embossed effect */
+}
+
+/* Hover effect for images */
+img {
+    transition: transform 0.3s ease-in-out;
+}
+img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Content section */
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.form-section {
+    width: 50%;
+    padding: 20px;
+}
+.image2 {
+    width: 45%;
+    height: auto;
+}
+
+/* Embossed effect for headings */
+h2 {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Embossed effect */
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Footer banner styling */
+.footer {
+    width: 100%;
+    height: 200px; /* Adjust height as needed */
+    background-image: url('images/image1.jpg'); /* Use image1 from images folder */
+    background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+}
+
+/* Form and button styling */
+form {
+    text-align: left;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+form label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer styling for contact/trademark */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+footer p {
+    margin: 10px 0;
+}
+
+/* For the preformatted text */
+pre {
+    text-align: left;
+}
+
+/* About Us page styling */
+.full-page-image {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('images/image2.jpg'); /* Use image2 from images folder */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 36px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* Embossed effect */
+}
+
