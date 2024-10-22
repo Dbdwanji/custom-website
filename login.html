@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css"> <!-- Assuming style.css has the base styles -->
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="login()">Login</button>
+        </form>
+
+        <p id="loginError" style="color: red;"></p>
+    </div>
+
+    <script>
+        const apiUrl = 'https://89agwnfs08.execute-api.us-east-1.amazonaws.com/dev/users';
+
+        // Login function
+        function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const data = {
+                email: email,
+                password: password
+            };
+
+            fetch(apiUrl + '/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // Save user data to localStorage or sessionStorage
+                        sessionStorage.setItem('user', JSON.stringify(data.user));
+                        // Redirect to the profile page
+                        window.location.href = 'profile.html';
+                    } else {
+                        document.getElementById('loginError').textContent = data.message;
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('loginError').textContent = 'Error: ' + error.message;
+                });
+        }
+    </script>
+</body>
+
+</html>
